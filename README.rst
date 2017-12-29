@@ -328,14 +328,13 @@ LISP ( “Чистый” LISP). LISP - List Processing.
     <summary></summary>
     trygraph
         digraph html {
-            abc [shape=none, margin=0, label=<
-                <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4">
-                    <TR>
-                        <TD>Голова</TD>
-                        <TD>Хвост</TD>
-                    </TR>
-                </TABLE>
-            >]
+            node [shape = record,height=.1];
+            node0[label = "<f0> |<f1> "];
+            head [label = "Голова"];
+            tail [label = "Хвост"];
+
+            "node0":f0 -> head;
+            "node0":f1 -> tail;
         }
     trygraph
     </details>
