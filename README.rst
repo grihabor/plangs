@@ -320,13 +320,13 @@ LISP ( “Чистый” LISP). LISP - List Processing.
 .. |s-выражение 3 items| image:: img/s-expression-3-items.png
 
 
-.. image:: https://g.gravizo.com/source/graph?https://raw.githubusercontent.com/grihabor/plangs/master/README.rst)
+.. image:: https://g.gravizo.com/source/trygraph?https://raw.githubusercontent.com/grihabor/plangs/master/README.rst)
 
 ::
 
     <details> 
     <summary></summary>
-    graph
+    trygraph
       digraph G {
         aize ="4,4";
         main [shape=box];
@@ -342,7 +342,7 @@ LISP ( “Чистый” LISP). LISP - List Processing.
         node [shape=box,style=filled,color=".7 .3 1.0"];
         execute -> compare;
       }
-    custom_mark10
+    trygraph
     </details>
 
 (something).nil - список
