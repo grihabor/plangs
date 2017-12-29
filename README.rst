@@ -107,7 +107,8 @@ FP — первый функциональный ЯП (ну хоть его мы
 ========
 
 Парадигма программирования =/ Язык программирования
-Деятельность программирования (делится на 3 части):
+
+Деятельность программирования:
 
 #. Игровое программирование
     прогр-е для себя. В ЯП главное, чтобы программисту нравилось (?). Пример - BASIC​ (???)
@@ -119,12 +120,14 @@ FP — первый функциональный ЯП (ну хоть его мы
 
 #. Индустриальное программирование  
     написание программ для последующего их использования в отрыве от программиста. 
+    ТП - технологическая потребность
+    КТП - критическая ТП 
+    Модульность - это КТП для ЯП здесь.
+    Пример - FORTRAN​
 
-ТП - технологическая потребность
-КТП - критическая ТП
-Модульность - это КТП для ЯП здесь.
-Пример - FORTRAN​.
-Всякие разные ЯПы:
+Всякие разные ЯПы
+-----------------
+
 + PL/1 (IBM)
 + Algol 68 
     На его основе был создан С (но это не точно)
@@ -168,39 +171,66 @@ Modula-2​ -> Oberon ​- 10 стр. описание языка (?).
 + Принцип сундука - берем все, что нужно (что может понадобиться)
 + Принцип <...> - берем все, без чего ЯП (наверное) не имеет смысла.
 
-Go - язык с динамической сборкой мусора.
-Объявления в Go: var <name> <type> [ = <value> ]
-Можно иначе, без явного указания типа <name> :=​ <value>
+Go - язык с динамической сборкой мусора.  
+Объявления в Go: 
+
+::
+
+    var <name> <type> [ = <value> ]
+    
+Можно иначе, без явного указания типа:
+
+::
+
+    <name> := <value>
 
 Вспомним задачу <stdin> => [reverse] => <stdout>.
+
 Решение на Go:
 
 .. code-block:: golang
-    import {
-        “put”,
-        “OS”,
-        “io/ioutil”,
-        “string"
-    }
-    func main() {
-        rdr := os.stdin // объявление переменной rdr
-        b, err := ioutil.ReadAll(rdr) // b - массив байт, ReadAll()
-        // возвращает кортеж
-        if err != nil {
-            panic (“Bad Input”)
+
+    package main;
+
+    import (
+        "bufio"
+        "fmt"
+        "os"
+    )
+
+    func Reverse(s string) string {
+        runes := []rune(s)
+        for i, j := 0, len(runes)-1; i < j; i, j = i+1, j-1 {
+            runes[i], runes[j] = runes[j], runes[i]
         }
-        b := string(b)
-        // альтернатива - s := string.Split(b, “”), “” - пустая строка
-        // в s будет срез (slice) массива
-        for (i:= len(b)-1; i>=0; --i {
-            fmt.print(b[i]) // могут быть проблемы с кодировками
-         }
+        return string(runes)
     }
+
+    func main() {
+        reader := bufio.NewReader(os.Stdin)
+        fmt.Print("Enter string: ")
+        text, _ := reader.ReadString('\n')
+        fmt.Println(Reverse(text))
+    }
+
     
 Решение на C#:
 
 .. code-block:: csharp
-    not implemented
+    
+    using System;
+
+    class MainClass {
+      public static void Main (string[] args) {
+        string input = Console.ReadLine();
+
+        char[] inputarray = input.ToCharArray();
+        Array.Reverse(inputarray);
+        string output = new string(inputarray);
+
+        Console.WriteLine (output);
+      }
+    }
 
 Решение на Python:
 
