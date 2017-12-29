@@ -146,40 +146,99 @@ Modula-2​ -> Oberon ​- 10 стр. описание языка (?).
 Go​ - язык с динамической сборкой мусора.
 Объявления в Go: var <name> <type> [ = <value> ]
 Можно иначе, без явного указания типа <name> :=​ <value>
+
 Вспомним задачу <stdin> => [reverse] => <stdout>.
 Решение на Go:
-import {
-“put”,
-“OS”,
-“io/ioutil”,
-“string }
-func main() {
-rdr := os.stdin // объявление переменной rdr
-b, err := ioutil.ReadAll(rdr) //b - массив байт, ReadAll()
-// возвращает кортеж
-if err != nil {
-panic (“Bad Input”)
-}
-b := string(b)
-// альтернатива - s := string.Split(b, “”), “” - пустая
+
+.. code-block:: go
+    import {
+        “put”,
+        “OS”,
+        “io/ioutil”,
+        “string"
+    }
+    func main() {
+        rdr := os.stdin // объявление переменной rdr
+        b, err := ioutil.ReadAll(rdr) //b - массив байт, ReadAll()
+        // возвращает кортеж
+        if err != nil {
+            panic (“Bad Input”)
+        }
+        b := string(b)
+        // альтернатива - s := string.Split(b, “”), “” - пустая
 строка
-// в s будет срез (slice) массива
-for (i:= len(b)-1; i>=0; --i {
-fmt.print(b[i]) // могут быть проблемы с кодировками
-}
-}
+        // в s будет срез (slice) массива
+        for (i:= len(b)-1; i>=0; --i {
+            fmt.print(b[i]) // могут быть проблемы с кодировками
+         }
+    }
+    
 Решение на C#​:
-<add later>
+
+.. code-block:: c#
+
+
 Решение на Python​:
-import sys
-print(sys.stdin.read()[::-1])
-Лекция 4:
+
+.. code-block:: python
+
+    import sys
+    print(sys.stdin.read()[::-1])
+    
+Лекция 4
+========
+
 Язык С++
+--------
+
 generic (обобщенное) программирование - шаблоны (параметрический полиморфизм)
 в Python​, JS​ его нет и быть не может
 Решение задачи на C++:
-#include <algorithm>
-#include <vector>
-#include <iostream>
-#include <iterator>
-using namespace std;
+
+.. code-block:: c++
+
+    #include <algorithm>
+    #include <vector>
+    #include <iostream>
+    #include <iterator>
+    
+    using namespace std;
+    
+    int main()
+    {
+        vector<char> v;
+        copy (istream_iterator<char>(cin), istream_iterator<char>(),
+back_inserter(v));
+        copy (v.rbegin(), v.rend(), ostream_iterator<char>(cout));
+        return 0;
+    }
+    
+Функциональное программирование
+-------------------------------
+
+Точка рассмотрения ЯП:
+
++-------------------------------------------------+
+|                      Базис                      |
++------------------------+------------------------+
+| Скалярный базис        | Структурный базис      |
++------------------------+------------------------+
+| Встроенные типы        | Составные типы данных, |
+| и операции, операторы, | массивы, структуры,    |
+| выражения              | составные операторы    |
++------------------------+------------------------+
+
+LISP​ ( “Чистый” LISP). LISP​ - List Processing.
+(LISP не знаю, переписываю с лекций, чекните & поправьте если что)
+У LISP ​Крайне простой базис (правила).
+Базис LISP’a​:
+Типы данных: (атом) -> (символ, т.е. идентификатор ) | (целое число)
+Средство развития: (S - выражение) -> (голова)(хвост)
+Шаг вычисления: число вычисляется само в себя.
+Список - частный случай S-выражения
+Иллюстрации:
+(something).nil - список
+() или nil - пустой список
+(a.(b.(c.nil))) ~ (a b c) - средство облегчения нотации.
+( (1 a) (2) 3 b ) - тоже список
+Замечание: вообще правильнее рисовать так:
