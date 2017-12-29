@@ -320,13 +320,16 @@ LISP ( “Чистый” LISP). LISP - List Processing.
 .. |s-выражение 3 items| image:: img/s-expression-3-items.png
 
 
-.. image:: https://g.gravizo.com/source/trygraph?https://raw.githubusercontent.com/grihabor/plangs/master/README.rst
+
+.. image:: https://g.gravizo.com/source/headtailgraph?https://raw.githubusercontent.com/grihabor/plangs/master/README.rst
+
+.. image:: https://g.gravizo.com/source/graphlistitems?https://raw.githubusercontent.com/grihabor/plangs/master/README.rst
 
 ::
 
     <details> 
     <summary></summary>
-    trygraph
+    headtailgraph
         digraph html {
             node [shape = record,height=.1];
             node0[label = "<f0> |<f1> "];
@@ -336,9 +339,40 @@ LISP ( “Чистый” LISP). LISP - List Processing.
             "node0":f0 -> head;
             "node0":f1 -> tail;
         }
-    trygraph
+    headtailgraph
     </details>
 
+
+
+::
+
+    <details> 
+    <summary></summary>
+    graphlistitems
+        digraph html {
+            node [shape = record,height=.1];
+            node0[label = "<f0> |<f1> "];
+            node1[label = "<f0> |<f1> "];
+            node2[label = "<f0> |<f1> "];
+            
+            a [label = "a"];
+            b [label = "b"];
+            c [label = "c"];
+            nil [label = "nil"];
+
+            "node0":f0 -> a;
+            "node0":f1 -> node1;
+            
+            "node1":f0 -> b;
+            "node1":f1 -> node2;
+            
+            "node2":f0 -> c;
+            "node2":f1 -> nil;
+        }
+    graphlistitems
+    </details>
+    
+    
 (something).nil - список
 () или nil - пустой список
 (a.(b.(c.nil))) ~ (a b c) - средство облегчения нотации.
