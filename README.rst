@@ -232,13 +232,15 @@ Go - язык с динамической сборкой мусора.
       }
     }
 
-Решение на Python:
+Решение на Python (`How to Slice Lists/Arrays and Tuples in Python`_):
 
 .. code-block:: python
 
     import sys
-    print(sys.stdin.read()[::-1])
+    print(input()[::-1])
     
+.. _How to Slice Lists/Arrays and Tuples in Python: https://www.pythoncentral.io/how-to-slice-listsarrays-and-tuples-in-python/
+
 Лекция 4
 ========
 
@@ -246,25 +248,32 @@ Go - язык с динамической сборкой мусора.
 --------
 
 generic (обобщенное) программирование - шаблоны (параметрический полиморфизм)
-в Python​, JS​ его нет и быть не может
+в Python, JS его нет и быть не может (бред какой-то, как же тогда type hints работают? зачем тогда весь модуль typing?)
+
 Решение задачи на C++:
 
 .. code-block:: c++
 
-    #include <algorithm>
-    #include <vector>
     #include <iostream>
-    #include <iterator>
-    
-    using namespace std;
-    
+    #include <string>
+
+    std::string reversed(const std::string& s) {
+      std::string reversed_s;
+      for(auto it = s.rbegin(); it != s.rend(); it++ ) {
+          reversed_s.push_back(*it);
+      } 
+      return reversed_s;
+    }
+
     int main()
     {
-        vector<char> v;
-        copy (istream_iterator<char>(cin), istream_iterator<char>(), back_inserter(v));
-        copy (v.rbegin(), v.rend(), ostream_iterator<char>(cout));
+        std::string v;
+        std::cout << "Type a string: ";
+        std::cin >> v;
+        std::cout << "Reversed: " << reversed(v) << std::endl;
         return 0;
     }
+
     
 Функциональное программирование
 -------------------------------
@@ -281,15 +290,33 @@ generic (обобщенное) программирование - шаблоны
 | выражения              | составные операторы    |
 +------------------------+------------------------+
 
-LISP​ ( “Чистый” LISP). LISP​ - List Processing.
+LISP ( “Чистый” LISP). LISP - List Processing.
 (LISP не знаю, переписываю с лекций, чекните & поправьте если что)
-У LISP ​Крайне простой базис (правила).
-Базис LISP’a​:
-Типы данных: (атом) -> (символ, т.е. идентификатор ) | (целое число)
-Средство развития: (S - выражение) -> (голова)(хвост)
-Шаг вычисления: число вычисляется само в себя.
-Список - частный случай S-выражения
-Иллюстрации:
+
+У LISP крайне простой базис (правила):
+
++ Типы данных
+    
+    (атом) -> (символ, т.е. идентификатор ) | (целое число)
+    
++ Средство развития: 
+    
+    (S - выражение) -> (голова)(хвост)
+    
++ Шаг вычисления
+
+    число вычисляется само в себя
+    
++ Список
+       
+    частный случай S-выражения
+
+Иллюстрации: |s-выражение head-tail| |s-выражение 3 items|
+
+.. |s-выражение head-tail| image: img/s-expression-head-tail.png
+.. |s-выражение 3 items| image: img/s-expression-3-items.png
+
+
 (something).nil - список
 () или nil - пустой список
 (a.(b.(c.nil))) ~ (a b c) - средство облегчения нотации.
