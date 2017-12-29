@@ -320,6 +320,31 @@ LISP ( “Чистый” LISP). LISP - List Processing.
 .. |s-выражение 3 items| image:: img/s-expression-3-items.png
 
 
+.. image:: https://g.gravizo.com/source/graph?https://raw.githubusercontent.com/grihabor/plangs/master/README.rst)
+
+::
+
+    <details> 
+    <summary></summary>
+    graph
+      digraph G {
+        aize ="4,4";
+        main [shape=box];
+        main -> parse [weight=8];
+        parse -> execute;
+        main -> init [style=dotted];
+        main -> cleanup;
+        execute -> { make_string; printf};
+        init -> make_string;
+        edge [color=red];
+        main -> printf [style=bold,label="100 times"];
+        make_string [label="make a string"];
+        node [shape=box,style=filled,color=".7 .3 1.0"];
+        execute -> compare;
+      }
+    custom_mark10
+    </details>
+
 (something).nil - список
 () или nil - пустой список
 (a.(b.(c.nil))) ~ (a b c) - средство облегчения нотации.
