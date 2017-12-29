@@ -311,10 +311,13 @@ LISP ( “Чистый” LISP). LISP - List Processing.
        
     частный случай S-выражения
 
-Иллюстрации: |s-выражение head-tail| |s-выражение 3 items|
+Иллюстрации: 
 
-.. |s-выражение head-tail| image: img/s-expression-head-tail.png
-.. |s-выражение 3 items| image: img/s-expression-3-items.png
+|s-выражение head-tail| |s-выражение 3 items|
+
+.. |s-выражение head-tail| image:: img/s-expression-head-tail.png
+    
+.. |s-выражение 3 items| image:: img/s-expression-3-items.png
 
 
 (something).nil - список
